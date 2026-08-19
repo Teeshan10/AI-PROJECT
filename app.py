@@ -80,9 +80,9 @@ if user_input:
         st.markdown(user_input)
         
     with st.chat_message("assistant"):
-       # Send query to Llama
+       # Send query to the model
         response = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="openai/gpt-oss-20b",
             messages=st.session_state.messages,
             tools=tools,
             tool_choice="auto"
@@ -117,11 +117,11 @@ if user_input:
                     "content": func_response
                 })
             
-           # Llama reads the data returned from Foursquare and writes the final answer
+          # The model reads the data returned from Foursquare and writes the final answer
             final_response = client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
+                model="openai/gpt-oss-20b",
                 messages=st.session_state.messages,
-                tools=tools  # <--- THIS IS THE MISSING LINE THAT CAUSED THE CRASH
+                tools=tools
             )
             final_text = final_response.choices[0].message.content
             st.markdown(final_text)
