@@ -65,9 +65,9 @@ if "messages" not in st.session_state:
         {"role": "system", "content": "You are a friendly travel concierge. Use the search_foursquare tool to find venue recommendations and present them nicely to the user."}
     ]
 
-# Display past chat messages (ignoring empty/tool messages)
+# Display only user and assistant messages that contain text
 for msg in st.session_state.messages:
-    if msg.get("content"):  # <--- ONLY RENDER IF THERE IS ACTUAL TEXT
+    if msg["role"] in ["user", "assistant"] and msg.get("content"):
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"])
 # 5. HANDLE CHAT INPUT & EXECUTION
