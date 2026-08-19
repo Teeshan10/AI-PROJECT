@@ -82,7 +82,7 @@ if user_input:
     with st.chat_message("assistant"):
         # Send query to Llama
         response = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="llama-3.1-70b-versatile", # <--- CHANGE THIS LINE
             messages=st.session_state.messages,
             tools=tools,
             tool_choice="auto"
@@ -119,7 +119,7 @@ if user_input:
             
             # Llama reads the data returned from Foursquare and writes the final answer
             final_response = client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
+                model="llama-3.1-70b-versatile", # <--- CHANGE THIS LINE TOO
                 messages=st.session_state.messages
             )
             final_text = final_response.choices[0].message.content
