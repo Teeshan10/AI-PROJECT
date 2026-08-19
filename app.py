@@ -40,7 +40,7 @@ def search_foursquare(query, near):
         return json.dumps(results)
     return "No results found or error fetching data."
 
-# Tell Llama how and when to use the Foursquare function
+# Tell model how and when to use the Foursquare function
 tools = [
     {
         "type": "function",
@@ -101,7 +101,7 @@ if user_input:
         
         response_msg = response.choices[0].message
         
-        # If Llama decides it needs real-time database results via Foursquare
+        # If model decides it needs real-time database results via Foursquare
         if response_msg.tool_calls:
             tool_call_record = {
                 "role": "assistant",
