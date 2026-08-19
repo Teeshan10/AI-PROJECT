@@ -4,7 +4,7 @@ import json
 from groq import Groq
 
 # 1. SET UP THE WEB UI
-st.title("🏨 AI Concierge & Travel Agent")
+st.title("Welcome to Teeshan's recommendation engine")
 st.write("Ask me to find hotels, restaurants, or local attractions anywhere in the world!")
 
 # 2. LOAD SECRET KEYS (Hidden safely from the public)
